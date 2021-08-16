@@ -1,6 +1,9 @@
+import 'package:e_commerce/provider/product_provider.dart';
 import 'package:e_commerce/screens/cartscreen.dart';
 import 'package:e_commerce/screens/homepage.dart';
+import 'package:e_commerce/widgets/cartsingleproduct.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class Checkout extends StatefulWidget {
   final double price;
@@ -14,6 +17,7 @@ class Checkout extends StatefulWidget {
 
 class _CheckoutState extends State<Checkout> {
   final TextStyle myStyle = TextStyle(fontSize: 20, color: Colors.black);
+  ProductProvider productProvider;
 
   Widget _buildSingleCartProduct() {
     return Container(
@@ -30,9 +34,7 @@ class _CheckoutState extends State<Checkout> {
                   width: 150,
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                        image: NetworkImage(widget.image),
-
-                        fit: BoxFit.fill),
+                        image: NetworkImage(widget.image), fit: BoxFit.fill),
                   ),
                 ),
                 Container(
@@ -82,8 +84,7 @@ class _CheckoutState extends State<Checkout> {
     );
   }
 
-  Widget _buildBottonDetail({String startName, String endName}){
-
+  Widget _buildBottonDetail({String startName, String endName}) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -101,6 +102,7 @@ class _CheckoutState extends State<Checkout> {
 
   @override
   Widget build(BuildContext context) {
+    productProvider = Provider.of<ProductProvider>(context);
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -122,9 +124,7 @@ class _CheckoutState extends State<Checkout> {
         //     color: Colors.black,
         //   ),
         // ),
-        iconTheme: IconThemeData(
-            color: Colors.black
-        ),
+        iconTheme: IconThemeData(color: Colors.black),
         actions: [
           IconButton(
             onPressed: () {},
@@ -143,34 +143,42 @@ class _CheckoutState extends State<Checkout> {
         // ignore: deprecated_member_use
         child: RaisedButton(
           color: Color(0xff746bc9),
-          child: Text("Buy", style: TextStyle(color: Colors.white, fontSize: 20),),
+          child: Text(
+            "Buy",
+            style: TextStyle(color: Colors.white, fontSize: 20),
+          ),
           onPressed: () {},
         ),
       ),
       body: Container(
         padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-        child: ListView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                _buildSingleCartProduct(),
-                _buildSingleCartProduct(),
-                _buildSingleCartProduct(),
-                _buildSingleCartProduct(),
-                Container(
-                  height: 150,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      _buildBottonDetail(startName: "Your Price", endName: "\$ 60.00"),
-                      _buildBottonDetail(startName: "Discount", endName: "3%"),
-                      _buildBottonDetail(startName: "Shipping", endName: "\$ 60.00"),
-                      _buildBottonDetail(startName: "Total", endName: "\$ 90"),
-                    ],
-                  ),
-                ),
-              ],
+            ListView.builder(
+                itemCount: productProvider.getCartModelListLength,
+                // ignore: missing_return
+                itemBuilder: (ctx, index) {
+                  return CartSingleProduct(
+                    name: productProvider.cartModelList[index].name,
+                    image: productProvider.cartModelList[index].image,
+                    price: productProvider.cartModelList[index].price,
+                    quentity: productProvider.cartModelList[index].quentity,
+                  );
+                }),
+            Container(
+              height: 150,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  _buildBottonDetail(
+                      startName: "Your Price", endName: "\$ 60.00"),
+                  _buildBottonDetail(startName: "Discount", endName: "3%"),
+                  _buildBottonDetail(
+                      startName: "Shipping", endName: "\$ 60.00"),
+                  _buildBottonDetail(startName: "Total", endName: "\$ 90"),
+                ],
+              ),
             ),
           ],
         ),

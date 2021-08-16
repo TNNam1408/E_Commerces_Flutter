@@ -21,6 +21,7 @@ class CartScreen extends StatefulWidget {
   _CartScreenState createState() => _CartScreenState();
 }
 ProductProvider productProvider;
+
 class _CartScreenState extends State<CartScreen> {
   // int count = 1;
 

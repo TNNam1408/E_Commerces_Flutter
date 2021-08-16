@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 class CartSingleProduct extends StatefulWidget {
   final String name;
   final String image;
-  final int quentity;
+  int quentity;
   final double price;
 
   CartSingleProduct({this.name, this.image, this.quentity, this.price});
@@ -10,11 +10,9 @@ class CartSingleProduct extends StatefulWidget {
   @override
   _CartSingleProductState createState() => _CartSingleProductState();
 }
-int count;
 class _CartSingleProductState extends State<CartSingleProduct> {
   @override
   Widget build(BuildContext context) {
-    count = widget.quentity;
     return Container(
       height: 150,
       width: double.infinity,
@@ -71,15 +69,15 @@ class _CartSingleProductState extends State<CartSingleProduct> {
                               GestureDetector(
                                 onTap: () {
                                   setState(() {
-                                    if (count > 1) {
-                                      count--;
+                                    if (widget.quentity > 1) {
+                                      widget.quentity--;
                                     }
                                   });
                                 },
                                 child: Icon(Icons.remove),
                               ),
                               Text(
-                                count.toString(),
+                                widget.quentity.toString(),
                                 style: TextStyle(
                                     fontSize: 18,
                                     color: Colors.black,
@@ -88,7 +86,7 @@ class _CartSingleProductState extends State<CartSingleProduct> {
                               GestureDetector(
                                 onTap: () {
                                   setState(() {
-                                    count++;
+                                    widget.quentity++;
                                   });
                                 },
                                 child: Icon(Icons.add),

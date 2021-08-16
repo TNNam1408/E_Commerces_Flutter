@@ -1,4 +1,3 @@
-
 import 'package:e_commerce/screens/cartscreen.dart';
 import 'package:flutter/material.dart';
 import '../provider/product_provider.dart';
@@ -19,8 +18,7 @@ class DetailScreen extends StatefulWidget {
 
 class _DetailScreenState extends State<DetailScreen> {
   int count = 1;
-  //ProductProvider productProvider;
-
+  ProductProvider productProvider;
 
   final TextStyle myStyleBold =
       TextStyle(fontSize: 25, color: Colors.black, fontWeight: FontWeight.bold);
@@ -137,9 +135,9 @@ class _DetailScreenState extends State<DetailScreen> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              _buildSizeProduct(name: "Uni"),//Universal version
-              _buildSizeProduct(name: "Pre"),//Premium version
-              _buildSizeProduct(name: "LiE"),//Limited Edition
+              _buildSizeProduct(name: "Uni"), //Universal version
+              _buildSizeProduct(name: "Pre"), //Premium version
+              _buildSizeProduct(name: "LiE"), //Limited Edition
             ],
           ),
         ),
@@ -237,22 +235,29 @@ class _DetailScreenState extends State<DetailScreen> {
           style: myStyle,
         ),
         onPressed: () {
-
-          Provider.of<ProductProvider>(context,listen: false).getCartData(
-              image: widget.image,
-              name:  widget.name,
-              price: widget.price,
-              quentity: count,
-
+          // Provider.of<ProductProvider>(context,listen: false).getCartData(
+          //     image: widget.image,
+          //     name:  widget.name,
+          //     price: widget.price,
+          //     quentity: count,
+          // );
+          productProvider.getCartData(
+            image: widget.image,
+            name: widget.name,
+            price: widget.price,
+            quentity: count,
           );
           //error
           Navigator.of(context).push(
-              MaterialPageRoute(builder: (ctx) => CartScreen(
-                // name: widget.name,
-                // image: widget.image,
-                // price: widget.price,
-                // quentity: count,
-              )));
+            MaterialPageRoute(
+              builder: (ctx) => CartScreen(
+                  // name: widget.name,
+                  // image: widget.image,
+                  // price: widget.price,
+                  // quentity: count,
+                  ),
+            ),
+          );
         },
       ),
     );
@@ -260,7 +265,7 @@ class _DetailScreenState extends State<DetailScreen> {
 
   @override
   Widget build(BuildContext context) {
-    //productProvider = Provider.of<ProductProvider>(context);
+    productProvider = Provider.of<ProductProvider>(context);
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -280,9 +285,7 @@ class _DetailScreenState extends State<DetailScreen> {
         //     color: Colors.black,
         //   ),
         // ),
-        iconTheme: IconThemeData(
-            color: Colors.black
-        ),
+        iconTheme: IconThemeData(color: Colors.black),
         actions: [
           IconButton(
             onPressed: () {},
