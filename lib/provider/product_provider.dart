@@ -108,26 +108,30 @@ class ProductProvider with ChangeNotifier {
 
   List<CartModel> cartModelList = [];
   CartModel cartModel;
-  void getCartData({
-    String name,
-    String image,
-    int quentity,
-    double price,
-  }) {
-    cartModel = CartModel(
-      image: image,
-      name: name,
-      price: price,
-      quentity: quentity,
-    );
-    cartModelList.add(cartModel);
+
+  void addToCart(String name, String image, int quentity, double price) {
+    // if (cartModelList.contains(name)) {
+    //   var newCart =
+    //       CartModel(image: image, name: name, price: price, quentity: quentity);
+    //   cartModelList.add(newCart);
+    // } else {
+    //   throw Exception(',,,,,,');
+    // }
+    var newCart =
+    CartModel(image: image, name: name, price: price, quentity: quentity);
+    cartModelList.add(newCart);
+
+    // (!cartModelList.contains(name))
+    //     ? cartModelList.add(newCart)
+
     notifyListeners();
   }
-  List<CartModel> get getCartModelList{
+
+  List<CartModel> get getCartModelList {
     return List.from(cartModelList);
   }
-  int get getCartModelListLength{
+
+  int get getCartModelListLength {
     return cartModelList.length;
   }
-
 }

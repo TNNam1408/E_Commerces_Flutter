@@ -9,15 +9,16 @@ class Checkout extends StatefulWidget {
   final double price;
   final String name;
   final String image;
+  final int quentity;
 
-  Checkout({this.price, this.name, this.image});
+  Checkout({this.quentity,this.price, this.name, this.image});
   @override
   _CheckoutState createState() => _CheckoutState();
 }
 
 class _CheckoutState extends State<Checkout> {
   final TextStyle myStyle = TextStyle(fontSize: 20, color: Colors.black);
-  ProductProvider productProvider;
+  // ProductProvider productProvider;
 
   Widget _buildSingleCartProduct() {
     return Container(
@@ -102,7 +103,12 @@ class _CheckoutState extends State<Checkout> {
 
   @override
   Widget build(BuildContext context) {
-    productProvider = Provider.of<ProductProvider>(context);
+    // productProvider = Provider.of<ProductProvider>(context);
+    print('LENGTH 1: ${productProvider.getCartModelListLength}');
+    print('PRICE 1: ${widget.price}');
+    print('NAME 1: ${widget.name}');
+    print('IMAGE 1: ${widget.image}');
+    print('QUENLITY 1: ${widget.quentity}');
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -151,21 +157,22 @@ class _CheckoutState extends State<Checkout> {
         ),
       ),
       body: Container(
-        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          // crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ListView.builder(
+            Container(
+              height: 300,
+              width: double.infinity,
+              child: ListView.builder(
                 itemCount: productProvider.getCartModelListLength,
-                // ignore: missing_return
-                itemBuilder: (ctx, index) {
-                  return CartSingleProduct(
-                    name: productProvider.cartModelList[index].name,
-                    image: productProvider.cartModelList[index].image,
-                    price: productProvider.cartModelList[index].price,
-                    quentity: productProvider.cartModelList[index].quentity,
-                  );
-                }),
+                itemBuilder: (ctx, index) => CartSingleProduct(
+                  image: productProvider.getCartModelList[index].image,
+                  name: productProvider.getCartModelList[index].name,
+                  price: productProvider.getCartModelList[index].price,
+                  quentity: productProvider.getCartModelList[index].quentity,
+                ),
+              ),
+            ),
             Container(
               height: 150,
               child: Column(

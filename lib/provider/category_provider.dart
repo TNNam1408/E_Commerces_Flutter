@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class CategoryProvider with ChangeNotifier {
-
   List<CategoryIcon> performanIcon = [];
   CategoryIcon performanIconData;
   List<CategoryIcon> motorIcon = [];
@@ -15,7 +14,6 @@ class CategoryProvider with ChangeNotifier {
   CategoryIcon bicycleIconData;
   List<CategoryIcon> logisticsIcon = [];
   CategoryIcon logisticsIconData;
-
 
   List<Product> performance = [];
   Product performanceData;
@@ -40,16 +38,16 @@ class CategoryProvider with ChangeNotifier {
         .collection("performance")
         .getDocuments();
     performanceIconSnapShot.documents.forEach(
-          (element) {
-        performanIconData = CategoryIcon(
-            image: element.data["image"]);
+      (element) {
+        performanIconData = CategoryIcon(image: element.data["image"]);
         newList.add(performanIconData);
       },
     );
     performanIcon = newList;
     notifyListeners();
   }
-  List<CategoryIcon> get getPerformanceIconList{
+
+  List<CategoryIcon> get getPerformanceIconList {
     return performanIcon;
   }
 
@@ -61,16 +59,16 @@ class CategoryProvider with ChangeNotifier {
         .collection("motor")
         .getDocuments();
     motorIconSnapShot.documents.forEach(
-          (element) {
-        motorIconData = CategoryIcon(
-            image: element.data["image"]);
+      (element) {
+        motorIconData = CategoryIcon(image: element.data["image"]);
         newList.add(motorIconData);
       },
     );
     motorIcon = newList;
     notifyListeners();
   }
-  List<CategoryIcon> get getMotorIconList{
+
+  List<CategoryIcon> get getMotorIconList {
     return motorIcon;
   }
 
@@ -82,16 +80,16 @@ class CategoryProvider with ChangeNotifier {
         .collection("car")
         .getDocuments();
     carIconSnapShot.documents.forEach(
-          (element) {
-        carIconData = CategoryIcon(
-            image: element.data["image"]);
+      (element) {
+        carIconData = CategoryIcon(image: element.data["image"]);
         newList.add(carIconData);
       },
     );
     carIcon = newList;
     notifyListeners();
   }
-  List<CategoryIcon> get getCarIconList{
+
+  List<CategoryIcon> get getCarIconList {
     return carIcon;
   }
 
@@ -103,16 +101,16 @@ class CategoryProvider with ChangeNotifier {
         .collection("bicycle")
         .getDocuments();
     bicycleIconSnapShot.documents.forEach(
-          (element) {
-        bicycleIconData = CategoryIcon(
-            image: element.data["image"]);
+      (element) {
+        bicycleIconData = CategoryIcon(image: element.data["image"]);
         newList.add(bicycleIconData);
       },
     );
     bicycleIcon = newList;
     notifyListeners();
   }
-  List<CategoryIcon> get getBicycleIconList{
+
+  List<CategoryIcon> get getBicycleIconList {
     return bicycleIcon;
   }
 
@@ -124,16 +122,16 @@ class CategoryProvider with ChangeNotifier {
         .collection("logistic")
         .getDocuments();
     logisticIconSnapShot.documents.forEach(
-          (element) {
-        logisticsIconData = CategoryIcon(
-            image: element.data["image"]);
+      (element) {
+        logisticsIconData = CategoryIcon(image: element.data["image"]);
         newList.add(logisticsIconData);
       },
     );
     logisticsIcon = newList;
     notifyListeners();
   }
-  List<CategoryIcon> get getLogisticsIconList{
+
+  List<CategoryIcon> get getLogisticsIconList {
     return logisticsIcon;
   }
 
@@ -156,7 +154,8 @@ class CategoryProvider with ChangeNotifier {
     performance = newList;
     notifyListeners();
   }
-  List<Product> get getPerformanceList{
+
+  List<Product> get getPerformanceList {
     return performance;
   }
 
@@ -168,7 +167,7 @@ class CategoryProvider with ChangeNotifier {
         .collection("motor")
         .getDocuments();
     motorSnapShot.documents.forEach(
-          (element) {
+      (element) {
         motorData = Product(
             image: element.data["image"],
             name: element.data["name"],
@@ -179,7 +178,8 @@ class CategoryProvider with ChangeNotifier {
     motor = newList;
     notifyListeners();
   }
-  List<Product> get getMotorList{
+
+  List<Product> get getMotorList {
     return motor;
   }
 
@@ -191,7 +191,7 @@ class CategoryProvider with ChangeNotifier {
         .collection("car")
         .getDocuments();
     carSnapShot.documents.forEach(
-          (element) {
+      (element) {
         carData = Product(
             image: element.data["image"],
             name: element.data["name"],
@@ -202,7 +202,8 @@ class CategoryProvider with ChangeNotifier {
     car = newList;
     notifyListeners();
   }
-  List<Product> get getCarList{
+
+  List<Product> get getCarList {
     return car;
   }
 
@@ -214,8 +215,8 @@ class CategoryProvider with ChangeNotifier {
         .collection("bicycle")
         .getDocuments();
     bicycleSnapShot.documents.forEach(
-          (element) {
-            bicycleData = Product(
+      (element) {
+        bicycleData = Product(
             image: element.data["image"],
             name: element.data["name"],
             price: element.data["price"]);
@@ -225,7 +226,8 @@ class CategoryProvider with ChangeNotifier {
     bicycle = newList;
     notifyListeners();
   }
-  List<Product> get getBicycleList{
+
+  List<Product> get getBicycleList {
     return bicycle;
   }
 
@@ -237,8 +239,8 @@ class CategoryProvider with ChangeNotifier {
         .collection("logistics")
         .getDocuments();
     logisticsSnapShot.documents.forEach(
-          (element) {
-            logisticsData = Product(
+      (element) {
+        logisticsData = Product(
             image: element.data["image"],
             name: element.data["name"],
             price: element.data["price"]);
@@ -248,7 +250,8 @@ class CategoryProvider with ChangeNotifier {
     logistics = newList;
     notifyListeners();
   }
-  List<Product> get getLogisticsList{
+
+  List<Product> get getLogisticsList {
     return logistics;
   }
 }

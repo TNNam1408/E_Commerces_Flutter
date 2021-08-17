@@ -6,7 +6,7 @@ class MyTextFormField extends StatelessWidget {
   final String name;
 
 
-  MyTextFormField({this.onChanged, this.validator, this.name});
+  MyTextFormField({@required this.onChanged, @required this.validator, @required this.name});
 
   @override
   Widget build(BuildContext context) {

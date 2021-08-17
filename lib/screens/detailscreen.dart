@@ -18,7 +18,7 @@ class DetailScreen extends StatefulWidget {
 
 class _DetailScreenState extends State<DetailScreen> {
   int count = 1;
-  ProductProvider productProvider;
+  // ProductProvider productProvider;
 
   final TextStyle myStyleBold =
       TextStyle(fontSize: 25, color: Colors.black, fontWeight: FontWeight.bold);
@@ -241,21 +241,24 @@ class _DetailScreenState extends State<DetailScreen> {
           //     price: widget.price,
           //     quentity: count,
           // );
-          productProvider.getCartData(
-            image: widget.image,
-            name: widget.name,
-            price: widget.price,
-            quentity: count,
-          );
+          // productProvider.getCartData(
+          //   image: widget.image,
+          //   name: widget.name,
+          //   price: widget.price,
+          //   quentity: count,
+          // );
+
+          productProvider.addToCart(
+              widget.name, widget.image, count, widget.price);
           //error
           Navigator.of(context).push(
             MaterialPageRoute(
               builder: (ctx) => CartScreen(
-                  // name: widget.name,
-                  // image: widget.image,
-                  // price: widget.price,
-                  // quentity: count,
-                  ),
+                name: widget.name,
+                image: widget.image,
+                price: widget.price,
+                quentity: count,
+              ),
             ),
           );
         },
@@ -265,7 +268,7 @@ class _DetailScreenState extends State<DetailScreen> {
 
   @override
   Widget build(BuildContext context) {
-    productProvider = Provider.of<ProductProvider>(context);
+    // productProvider = Provider.of<ProductProvider>(context);
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,

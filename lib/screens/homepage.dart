@@ -35,27 +35,32 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+
   //Category Icon
-  Widget _BuildPreformanceIcon(){
+  Widget _BuildPreformanceIcon() {
     List<Product> performance = categoryProvider.getPerformanceList;
-    List<CategoryIcon> performanceIcon = categoryProvider.getPerformanceIconList;
+    List<CategoryIcon> performanceIcon =
+        categoryProvider.getPerformanceIconList;
     return Row(
       children: performanceIcon.map((e) {
         return GestureDetector(
           onTap: () {
-            Navigator.of(context).push(MaterialPageRoute(
+            Navigator.of(context).push(
+              MaterialPageRoute(
                 builder: (ctx) => ListProduct(
                   name: "Performance",
                   snapShot: performance,
-                )));
+                ),
+              ),
+            );
           },
-          child: _buildCategoryProduct(
-              image:e.image, color: 0xFF393939),
+          child: _buildCategoryProduct(image: e.image, color: 0xFF393939),
         );
       }).toList(),
     );
   }
-  Widget _BuildMotorIconIcon(){
+
+  Widget _BuildMotorIconIcon() {
     List<Product> motor = categoryProvider.getMotorList;
     List<CategoryIcon> motorIcon = categoryProvider.getMotorIconList;
     return Row(
@@ -64,17 +69,17 @@ class _HomePageState extends State<HomePage> {
           onTap: () {
             Navigator.of(context).push(MaterialPageRoute(
                 builder: (ctx) => ListProduct(
-                  name: "Motor",
-                  snapShot: motor,
-                )));
+                      name: "Motor",
+                      snapShot: motor,
+                    )));
           },
-          child: _buildCategoryProduct(
-              image:e.image, color: 0xFF393939),
+          child: _buildCategoryProduct(image: e.image, color: 0xFF393939),
         );
       }).toList(),
     );
   }
-  Widget _BuildCarIconIcon(){
+
+  Widget _BuildCarIconIcon() {
     List<Product> car = categoryProvider.getCarList;
     List<CategoryIcon> carIcon = categoryProvider.getCarIconList;
     return Row(
@@ -83,17 +88,17 @@ class _HomePageState extends State<HomePage> {
           onTap: () {
             Navigator.of(context).push(MaterialPageRoute(
                 builder: (ctx) => ListProduct(
-                  name: "Car",
-                  snapShot: car,
-                )));
+                      name: "Car",
+                      snapShot: car,
+                    )));
           },
-          child: _buildCategoryProduct(
-              image:e.image, color: 0xFF393939),
+          child: _buildCategoryProduct(image: e.image, color: 0xFF393939),
         );
       }).toList(),
     );
   }
-  Widget _BuildBicycleIconIcon(){
+
+  Widget _BuildBicycleIconIcon() {
     List<Product> bicycle = categoryProvider.getBicycleList;
     List<CategoryIcon> bicycleIcon = categoryProvider.getBicycleIconList;
     return Row(
@@ -102,17 +107,17 @@ class _HomePageState extends State<HomePage> {
           onTap: () {
             Navigator.of(context).push(MaterialPageRoute(
                 builder: (ctx) => ListProduct(
-                  name: "Bicycle",
-                  snapShot: bicycle,
-                )));
+                      name: "Bicycle",
+                      snapShot: bicycle,
+                    )));
           },
-          child: _buildCategoryProduct(
-              image:e.image, color: 0xFF393939),
+          child: _buildCategoryProduct(image: e.image, color: 0xFF393939),
         );
       }).toList(),
     );
   }
-  Widget _BuildLogisticsIconIcon(){
+
+  Widget _BuildLogisticsIconIcon() {
     List<Product> logistics = categoryProvider.getLogisticsList;
     List<CategoryIcon> logisticsIcon = categoryProvider.getLogisticsIconList;
     return Row(
@@ -121,12 +126,11 @@ class _HomePageState extends State<HomePage> {
           onTap: () {
             Navigator.of(context).push(MaterialPageRoute(
                 builder: (ctx) => ListProduct(
-                  name: "Logistics",
-                  snapShot: logistics,
-                )));
+                      name: "Logistics",
+                      snapShot: logistics,
+                    )));
           },
-          child: _buildCategoryProduct(
-              image:e.image, color: 0xFF393939),
+          child: _buildCategoryProduct(image: e.image, color: 0xFF393939),
         );
       }).toList(),
     );
@@ -377,7 +381,7 @@ class _HomePageState extends State<HomePage> {
 
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: hometopproduct.map((e){
+          children: hometopproduct.map((e) {
             //print('NAME:'+ e.name);
             return Expanded(
               child: Row(
@@ -387,11 +391,10 @@ class _HomePageState extends State<HomePage> {
                       onTap: () {
                         Navigator.of(context).push(MaterialPageRoute(
                             builder: (ctx) => DetailScreen(
-                              name: e.name,
-                              price: e.price,
-                              image: e.image,
-
-                            )));
+                                  name: e.name,
+                                  price: e.price,
+                                  image: e.image,
+                                )));
                       },
                       child: SingleProduct(
                         name: e.name,
@@ -518,10 +521,10 @@ class _HomePageState extends State<HomePage> {
                       onTap: () {
                         Navigator.of(context).push(MaterialPageRoute(
                             builder: (ctx) => DetailScreen(
-                              name: e.name,
-                              price: e.price,
-                              image: e.image,
-                            )));
+                                  name: e.name,
+                                  price: e.price,
+                                  image: e.image,
+                                )));
                       },
                       child: SingleProduct(
                         name: e.name,
@@ -564,6 +567,7 @@ class _HomePageState extends State<HomePage> {
     categoryProvider.getCarData();
     categoryProvider.getBicycleData();
     categoryProvider.getLogisticsData();
+
     ///Icon Category Data
     categoryProvider.getPerformanceIconData();
     categoryProvider.getMotorIconData();
@@ -575,8 +579,6 @@ class _HomePageState extends State<HomePage> {
     productProvider.getNewAchivesData();
     productProvider.getHomeTopProductData();
     productProvider.getHomeAchiveData();
-
-
 
     return Scaffold(
       key: _scaffoldKey,
@@ -623,7 +625,7 @@ class _HomePageState extends State<HomePage> {
                     height: 10,
                   ),
                   _buildTopProduct(),
-                 _buildNewAchives(),
+                  _buildNewAchives(),
                 ],
               ),
             ),
