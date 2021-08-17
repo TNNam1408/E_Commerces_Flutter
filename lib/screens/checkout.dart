@@ -1,6 +1,7 @@
 import 'package:e_commerce/provider/product_provider.dart';
 import 'package:e_commerce/screens/cartscreen.dart';
 import 'package:e_commerce/screens/homepage.dart';
+import 'package:e_commerce/widgets/cardcheckoutproduct.dart';
 import 'package:e_commerce/widgets/cartsingleproduct.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -165,7 +166,7 @@ class _CheckoutState extends State<Checkout> {
               width: double.infinity,
               child: ListView.builder(
                 itemCount: productProvider.getCartModelListLength,
-                itemBuilder: (ctx, index) => CartSingleProduct(
+                itemBuilder: (ctx, index) => CardCheckoutProduct(
                   image: productProvider.getCartModelList[index].image,
                   name: productProvider.getCartModelList[index].name,
                   price: productProvider.getCartModelList[index].price,
