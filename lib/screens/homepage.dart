@@ -4,6 +4,7 @@ import 'package:e_commerce/provider/category_provider.dart';
 import 'package:e_commerce/provider/product_provider.dart';
 import 'package:e_commerce/screens/detailscreen.dart';
 import 'package:e_commerce/screens/listproduct.dart';
+import 'package:e_commerce/widgets/notification_button.dart';
 import 'package:e_commerce/widgets/singleproduct.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -601,10 +602,13 @@ class _HomePageState extends State<HomePage> {
             )),
         actions: [
           IconButton(
-              onPressed: () {}, icon: Icon(Icons.search, color: Colors.black)),
-          IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.notifications_none, color: Colors.black)),
+            onPressed: () {},
+            icon: Icon(
+              Icons.search,
+              color: Colors.black,
+            ),
+          ),
+          NotificationButton(),
         ],
       ),
       body: Container(

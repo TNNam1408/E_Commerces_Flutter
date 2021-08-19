@@ -4,6 +4,7 @@ import 'package:e_commerce/model/cartmodel.dart';
 import 'package:e_commerce/screens/checkout.dart';
 import 'package:e_commerce/screens/detailscreen.dart';
 import 'package:e_commerce/widgets/cartsingleproduct.dart';
+import 'package:e_commerce/widgets/notification_button.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../provider/product_provider.dart';
@@ -47,6 +48,7 @@ class _CartScreenState extends State<CartScreen> {
             style: myStyle,
           ),
           onPressed: () {
+            productProvider.addNotification("Notification");
             Navigator.of(context).push(MaterialPageRoute(builder: (ctx)=>Checkout(
               name: widget.name,
               image: widget.image,
@@ -77,13 +79,7 @@ class _CartScreenState extends State<CartScreen> {
         // ),
         iconTheme: IconThemeData(color: Colors.black),
         actions: [
-          IconButton(
-            onPressed: () {},
-            icon: Icon(
-              Icons.notifications_none,
-              color: Colors.black,
-            ),
-          ),
+          NotificationButton(),
         ],
       ),
       body: ListView.builder(

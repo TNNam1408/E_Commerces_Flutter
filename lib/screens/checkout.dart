@@ -3,6 +3,7 @@ import 'package:e_commerce/screens/cartscreen.dart';
 import 'package:e_commerce/screens/homepage.dart';
 import 'package:e_commerce/widgets/cardcheckoutproduct.dart';
 import 'package:e_commerce/widgets/cartsingleproduct.dart';
+import 'package:e_commerce/widgets/notification_button.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -12,7 +13,7 @@ class Checkout extends StatefulWidget {
   final String image;
   final int quentity;
 
-  Checkout({this.quentity,this.price, this.name, this.image});
+  Checkout({this.quentity, this.price, this.name, this.image});
   @override
   _CheckoutState createState() => _CheckoutState();
 }
@@ -121,8 +122,6 @@ class _CheckoutState extends State<Checkout> {
         elevation: 0.0,
         // leading: IconButton(
         //   onPressed: () {
-        //     // Navigator.of(context).pushReplacement(
-        //     //     MaterialPageRoute(builder: (ctx) => CartScreen()));
         //     Navigator.of(context).pushReplacement(
         //         MaterialPageRoute(builder: (ctx) => HomePage()));
         //   },
@@ -133,13 +132,7 @@ class _CheckoutState extends State<Checkout> {
         // ),
         iconTheme: IconThemeData(color: Colors.black),
         actions: [
-          IconButton(
-            onPressed: () {},
-            icon: Icon(
-              Icons.notifications_none,
-              color: Colors.black,
-            ),
-          ),
+          NotificationButton(),
         ],
       ),
       bottomNavigationBar: Container(
@@ -154,7 +147,10 @@ class _CheckoutState extends State<Checkout> {
             "Buy",
             style: TextStyle(color: Colors.white, fontSize: 20),
           ),
-          onPressed: () {},
+          onPressed: () {
+            // Navigator.of(context).push(
+            //     MaterialPageRoute(builder: (ctx) => HomePage()));
+          },
         ),
       ),
       body: Container(

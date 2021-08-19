@@ -134,4 +134,12 @@ class ProductProvider with ChangeNotifier {
   int get getCartModelListLength {
     return cartModelList.length;
   }
+
+  List<String>notificationList = [];
+  void addNotification(String notification){
+    notificationList.add(notification);
+  }
+  int get getNotificationIndex{
+    return notificationList.length;
+  }
 }

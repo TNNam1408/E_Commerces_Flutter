@@ -1,4 +1,5 @@
 import 'package:e_commerce/screens/cartscreen.dart';
+import 'package:e_commerce/widgets/notification_button.dart';
 import 'package:flutter/material.dart';
 import '../provider/product_provider.dart';
 import 'package:provider/provider.dart';
@@ -290,13 +291,7 @@ class _DetailScreenState extends State<DetailScreen> {
         // ),
         iconTheme: IconThemeData(color: Colors.black),
         actions: [
-          IconButton(
-            onPressed: () {},
-            icon: Icon(
-              Icons.notifications_none,
-              color: Colors.black,
-            ),
-          ),
+          NotificationButton(),
         ],
       ),
       body: Container(
