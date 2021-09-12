@@ -6,6 +6,7 @@ import 'package:e_commerce/screens/detailscreen.dart';
 import 'package:e_commerce/screens/homepage.dart';
 import 'package:e_commerce/screens/listproduct.dart';
 import 'package:e_commerce/screens/login.dart';
+import 'package:e_commerce/screens/profilescreen.dart';
 import 'package:e_commerce/screens/signup.dart';
 import 'package:e_commerce/screens/welcomescreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -41,11 +42,18 @@ class MyApp extends StatelessWidget {
         child: StreamBuilder(
           stream: FirebaseAuth.instance.onAuthStateChanged,
           builder: (ctx, snapshop) {
-            if (snapshop.hasData) {
-              return HomePage();
-            } else {
-              return Login();
-            }
+            // if (snapshop.hasData) {
+            //   return HomePage();
+            // } else {
+            //   return Login();
+            // }
+            // ignore: missing_return
+            return MaterialApp(
+              debugShowCheckedModeBanner: false,
+              theme: ThemeData(iconTheme: IconThemeData(color: Colors.yellowAccent)),
+
+              home: snapshop.hasData ? HomePage():Login(),
+            );
           },
         ),
       ),

@@ -4,6 +4,7 @@ import 'package:e_commerce/provider/category_provider.dart';
 import 'package:e_commerce/provider/product_provider.dart';
 import 'package:e_commerce/screens/detailscreen.dart';
 import 'package:e_commerce/screens/listproduct.dart';
+import 'package:e_commerce/screens/profilescreen.dart';
 import 'package:e_commerce/widgets/notification_button.dart';
 import 'package:e_commerce/widgets/singleproduct.dart';
 import 'package:flutter/cupertino.dart';
@@ -152,6 +153,13 @@ class _HomePageState extends State<HomePage> {
       child: ListView(
         children: [
           UserAccountsDrawerHeader(
+            onDetailsPressed: (){
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (ctx) => ProfileScreen(),
+                ),
+              );
+            },
             accountName: Text(
               "TN Nam",
               style: TextStyle(color: Colors.black),

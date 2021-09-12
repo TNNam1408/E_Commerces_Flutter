@@ -148,8 +148,8 @@ class _CheckoutState extends State<Checkout> {
             style: TextStyle(color: Colors.white, fontSize: 20),
           ),
           onPressed: () {
-            // Navigator.of(context).push(
-            //     MaterialPageRoute(builder: (ctx) => HomePage()));
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (ctx) => HomePage()));
           },
         ),
       ),
