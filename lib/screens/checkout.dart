@@ -111,6 +111,22 @@ class _CheckoutState extends State<Checkout> {
     print('NAME 1: ${widget.name}');
     print('IMAGE 1: ${widget.image}');
     print('QUENLITY 1: ${widget.quentity}');
+    double subTotal = 0;
+    double discount =3;
+    double discountRupees;
+    double shipping = 60;
+    double total;
+    productProvider.getCheckOutModelList.forEach((element) {
+      subTotal =subTotal + element.price * element.quentity;
+    });
+    print({subTotal});
+
+    discountRupees = discount/100*subTotal;
+    print({discountRupees});
+
+    total = subTotal+shipping - discountRupees;
+    print({total});
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -161,12 +177,12 @@ class _CheckoutState extends State<Checkout> {
               height: 300,
               width: double.infinity,
               child: ListView.builder(
-                itemCount: productProvider.getCartModelListLength,
+                itemCount: productProvider.getCheckOutModelListLength,
                 itemBuilder: (ctx, index) => CardCheckoutProduct(
-                  image: productProvider.getCartModelList[index].image,
-                  name: productProvider.getCartModelList[index].name,
-                  price: productProvider.getCartModelList[index].price,
-                  quentity: productProvider.getCartModelList[index].quentity,
+                  image: productProvider.getCheckOutModelList[index].image,
+                  name: productProvider.getCheckOutModelList[index].name,
+                  price: productProvider.getCheckOutModelList[index].price,
+                  quentity: productProvider.getCheckOutModelList[index].quentity,
                 ),
               ),
             ),
@@ -176,11 +192,11 @@ class _CheckoutState extends State<Checkout> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   _buildBottonDetail(
-                      startName: "Your Price", endName: "\$ 60.00"),
-                  _buildBottonDetail(startName: "Discount", endName: "3%"),
+                      startName: "Your Price", endName: "\$ ${subTotal.toStringAsFixed(2)}"),
+                  _buildBottonDetail(startName: "Discount", endName: "${discountRupees.toStringAsFixed(2)}"),
                   _buildBottonDetail(
-                      startName: "Shipping", endName: "\$ 60.00"),
-                  _buildBottonDetail(startName: "Total", endName: "\$ 90"),
+                      startName: "Shipping", endName: "\$ ${shipping.toStringAsFixed(2)}"),
+                  _buildBottonDetail(startName: "Total", endName: "\$ ${total.toStringAsFixed(2)}"),
                 ],
               ),
             ),

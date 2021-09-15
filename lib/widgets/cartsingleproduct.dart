@@ -1,3 +1,4 @@
+import 'package:e_commerce/screens/homepage.dart';
 import 'package:flutter/material.dart';
 class CartSingleProduct extends StatefulWidget {
   final String name;
@@ -11,8 +12,15 @@ class CartSingleProduct extends StatefulWidget {
   _CartSingleProductState createState() => _CartSingleProductState();
 }
 class _CartSingleProductState extends State<CartSingleProduct> {
+
   @override
   Widget build(BuildContext context) {
+    // productProvider.getCheckOutData(
+    //     quentity: widget.quentity,
+    //     image: widget.image,
+    //     name: widget.name,
+    //     price: widget.price
+    // );
     return Container(
       height: 150,
       width: double.infinity,
@@ -71,6 +79,12 @@ class _CartSingleProductState extends State<CartSingleProduct> {
                                   setState(() {
                                     if (widget.quentity > 1) {
                                       widget.quentity--;
+                                      productProvider.getCheckOutData(
+                                        quentity: widget.quentity,
+                                        image: widget.image,
+                                        name: widget.name,
+                                        price: widget.price
+                                      );
                                     }
                                   });
                                 },
@@ -87,6 +101,12 @@ class _CartSingleProductState extends State<CartSingleProduct> {
                                 onTap: () {
                                   setState(() {
                                     widget.quentity++;
+                                    productProvider.getCheckOutData(
+                                        quentity: widget.quentity,
+                                        image: widget.image,
+                                        name: widget.name,
+                                        price: widget.price
+                                    );
                                   });
                                 },
                                 child: Icon(Icons.add),

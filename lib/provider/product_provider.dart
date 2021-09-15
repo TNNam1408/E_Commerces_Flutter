@@ -109,6 +109,30 @@ class ProductProvider with ChangeNotifier {
   List<CartModel> cartModelList = [];
   CartModel cartModel;
 
+  List<CartModel> CheckOutModelList = [];
+  CartModel checkOutModel;
+
+  void getCheckOutData({
+    int quentity,
+    double price,
+    String name,
+    String image,
+  }) {
+    checkOutModel = CartModel(
+      image: image,
+      name: name,
+      price: price,
+      quentity: quentity,
+    );
+    CheckOutModelList.add(checkOutModel);
+  }
+  List<CartModel> get getCheckOutModelList {
+    return List.from(CheckOutModelList);
+  }
+  int get getCheckOutModelListLength {
+    return CheckOutModelList.length;
+  }
+
   void addToCart(String name, String image, int quentity, double price) {
     // if (cartModelList.contains(name)) {
     //   var newCart =
@@ -118,7 +142,7 @@ class ProductProvider with ChangeNotifier {
     //   throw Exception(',,,,,,');
     // }
     var newCart =
-    CartModel(image: image, name: name, price: price, quentity: quentity);
+        CartModel(image: image, name: name, price: price, quentity: quentity);
     cartModelList.add(newCart);
 
     // (!cartModelList.contains(name))
@@ -135,11 +159,13 @@ class ProductProvider with ChangeNotifier {
     return cartModelList.length;
   }
 
-  List<String>notificationList = [];
-  void addNotification(String notification){
+
+  List<String> notificationList = [];
+  void addNotification(String notification) {
     notificationList.add(notification);
   }
-  int get getNotificationIndex{
+
+  int get getNotificationIndex {
     return notificationList.length;
   }
 }

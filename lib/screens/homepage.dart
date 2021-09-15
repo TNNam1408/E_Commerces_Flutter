@@ -154,7 +154,7 @@ class _HomePageState extends State<HomePage> {
         children: [
           UserAccountsDrawerHeader(
             onDetailsPressed: (){
-              Navigator.of(context).push(
+              Navigator.of(context).pushReplacement(
                 MaterialPageRoute(
                   builder: (ctx) => ProfileScreen(),
                 ),
