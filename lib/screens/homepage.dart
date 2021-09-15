@@ -597,7 +597,7 @@ class _HomePageState extends State<HomePage> {
     productProvider.getNewAchivesData();
     productProvider.getHomeTopProductData();
     productProvider.getHomeAchiveData();
-    productProvider.getUserData();
+    //productProvider.getUserData();
 
     return Scaffold(
       key: _scaffoldKey,
