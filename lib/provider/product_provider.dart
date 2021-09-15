@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_commerce/model/cartmodel.dart';
 import 'package:e_commerce/model/product.dart';
+import 'package:e_commerce/model/usermodel.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class ProductProvider with ChangeNotifier {
@@ -112,6 +114,31 @@ class ProductProvider with ChangeNotifier {
   List<CartModel> CheckOutModelList = [];
   CartModel checkOutModel;
 
+  // UserModel userModel;
+  // Future<void> getUserData() async {
+  //   FirebaseUser currentUser =
+  //       FirebaseAuth.instance.currentUser as FirebaseUser;
+  //   QuerySnapshot userSnapShot =
+  //       await Firestore.instance.collection("User").getDocuments();
+  //   userSnapShot.documents.forEach(
+  //     (element) {
+  //       if (currentUser.uid == element.data["UserId"]) {
+  //         userModel = UserModel(
+  //           userName: element.data["UserName"],
+  //           userEmail: element.data["UserEmail"],
+  //           userGendel: element.data["UserGendel"],
+  //           userphoneNumber: element.data["Phone Number"],
+  //         );
+  //       }
+  //     },
+  //   );
+  // }
+  // UserModel get getUserModel{
+  //   print ("Hi ${userModel}");
+  //   return userModel;
+  //
+  // }
+
   void getCheckOutData({
     int quentity,
     double price,
@@ -126,9 +153,11 @@ class ProductProvider with ChangeNotifier {
     );
     CheckOutModelList.add(checkOutModel);
   }
+
   List<CartModel> get getCheckOutModelList {
     return List.from(CheckOutModelList);
   }
+
   int get getCheckOutModelListLength {
     return CheckOutModelList.length;
   }
@@ -158,7 +187,6 @@ class ProductProvider with ChangeNotifier {
   int get getCartModelListLength {
     return cartModelList.length;
   }
-
 
   List<String> notificationList = [];
   void addNotification(String notification) {

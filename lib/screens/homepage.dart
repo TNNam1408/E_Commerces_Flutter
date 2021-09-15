@@ -7,12 +7,14 @@ import 'package:e_commerce/screens/listproduct.dart';
 import 'package:e_commerce/screens/profilescreen.dart';
 import 'package:e_commerce/widgets/notification_button.dart';
 import 'package:e_commerce/widgets/singleproduct.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:provider/provider.dart';
 import '../model/product.dart';
+import 'login.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -161,7 +163,8 @@ class _HomePageState extends State<HomePage> {
               );
             },
             accountName: Text(
-              "TN Nam",
+              // productProvider.getUserModel.userName,
+              "Jos",
               style: TextStyle(color: Colors.black),
             ),
             decoration: BoxDecoration(color: Colors.grey[300]),
@@ -169,7 +172,8 @@ class _HomePageState extends State<HomePage> {
               backgroundImage: AssetImage("images/yamahar1.jpg"),
             ),
             accountEmail: Text(
-              "TNNam1408@gmail.com",
+              // productProvider.getUserModel.userEmail,
+              "Jos@ga.cm",
               style: TextStyle(color: Colors.black),
             ),
           ),
@@ -226,7 +230,12 @@ class _HomePageState extends State<HomePage> {
             title: Text("Contant Us"),
           ),
           ListTile(
-            onTap: () {},
+            onTap: () {
+              FirebaseAuth.instance.signOut();
+              //FirebaseUser user = FirebaseAuth.instance.currentUser as FirebaseUser;
+              Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (cxt) => Login()));
+            },
             leading: Icon(Icons.exit_to_app),
             title: Text("Logout"),
           ),
@@ -588,6 +597,7 @@ class _HomePageState extends State<HomePage> {
     productProvider.getNewAchivesData();
     productProvider.getHomeTopProductData();
     productProvider.getHomeAchiveData();
+    productProvider.getUserData();
 
     return Scaffold(
       key: _scaffoldKey,
